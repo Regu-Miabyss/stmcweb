@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>STCraft — Minecraft 生存服务器</title>
+  <meta name="description" content="STCraft 是一款 Minecraft Java 版生存服务器：领地保护、mcMMO 技能、宠物、玩家市场、每日签到，正版盗版均可加入。">
+  <meta property="og:title" content="STCraft — Minecraft 生存服务器">
+  <meta property="og:description" content="探索、建造、生存 —— 属于你的方块冒险。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.stcraft.cc/">
+  <link rel="canonical" href="https://www.stcraft.cc/">
+  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ============ 导航栏 ============ -->
+  <header class="nav" id="top">
+    <div class="container nav-inner">
+      <a class="brand" href="#top">
+        <img class="brand-icon" src="images/favicon.svg" alt="STCraft 图标" width="26" height="26">
+        <span class="brand-text">STCraft</span>
+      </a>
+      <nav class="nav-links" id="navLinks">
+        <a href="#features">服务器特色</a>
+        <a href="#gameplay">玩法介绍</a>
+        <a href="#join">加入指南</a>
+        <a href="#rules">服务器规则</a>
+        <a href="#faq">常见问题</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="打开菜单">&#9776;</button>
+    </div>
+  </header>
+
+  <!-- ============ 首屏 ============ -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <div class="hero-badge">Java 版 &middot; 生存 &middot; 多版本兼容 &middot; 正版盗版均可</div>
+      <h1 class="hero-title">STCraft</h1>
+      <p class="hero-slogan">探索、建造、生存 —— 属于你的方块冒险。<br>领地、技能、宠物、市场，一次满足。</p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" id="copyAddressBtn">复制服务器地址</button>
+        <a class="btn btn-ghost" href="#join">如何加入？</a>
+      </div>
+      <div class="address-box" title="点击复制">
+        <span class="address-label">服务器地址</span>
+        <code id="serverAddress">加载中…</code>
+      </div>
+      <div class="hero-contact" id="heroContact">
+        <a class="contact-chip" id="qqGroupLink" href="#" target="_blank" rel="noopener">🐧 加入 QQ 群一起开黑</a>
+        <span class="qq-number">群号：<code id="qqGroup"></code><button class="btn-copy" data-copy-target="qqGroup" aria-label="复制群号">复制</button></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 实时状态 ============ -->
+  <section class="status" id="status">
+    <div class="container">
+      <div class="status-grid">
+        <div class="status-card">
+          <span class="status-label">服务器状态</span>
+          <span class="status-value">
+            <span class="dot" id="statusDot"></span>
+            <span id="statusText">查询中…</span>
+          </span>
+        </div>
+        <div class="status-card">
+          <span class="status-label">在线玩家</span>
+          <span class="status-value"><b id="onlinePlayers">-</b>&nbsp;/&nbsp;<span id="maxPlayers">-</span></span>
+        </div>
+        <div class="status-card">
+          <span class="status-label">服务端版本</span>
+          <span class="status-value" id="serverVersion">-</span>
+        </div>
+        <div class="status-card">
+          <span class="status-label">服务器核心</span>
+          <span class="status-value">Paper 26.2</span>
+        </div>
+      </div>
+      <p class="status-note">状态数据由 mcsrvstat.us 实时查询，每 60 秒自动刷新。</p>
+    </div>
+  </section>
+
+  <!-- ============ 服务器特色 ============ -->
+  <section class="section" id="features">
+    <div class="container">
+      <h2 class="section-title">服务器特色</h2>
+      <p class="section-subtitle">我们用心打造一个稳定、公平、好玩的生存世界</p>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-icon">🌍</div>
+          <h3>自定义地形</h3>
+          <p>主世界由 TerraformGenerator 生成，山川湖海更加壮丽，探索永远有惊喜。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔓</div>
+          <h3>自由加入</h3>
+          <p>离线模式开放，正版与非正版客户端均可进入，首次进服注册密码即可游玩。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🧩</div>
+          <h3>多版本兼容</h3>
+          <p>服务端基于 26.2，通过 ViaVersion / ViaBackwards 支持多个客户端版本加入。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛡️</div>
+          <h3>公平反作弊</h3>
+          <p>Vulcan 反作弊系统 7×24 小时守护，让每一位玩家的努力都真实有效。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⏪</div>
+          <h3>数据可回滚</h3>
+          <p>CoreProtect 全量记录方块变化，熊孩子破坏一键回滚，建筑安全有保障。</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>高性能核心</h3>
+          <p>Paper 核心 + ZGC 调优 + 大内存配置，跑图流畅不卡顿，长期稳定运行。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 玩法介绍 ============ -->
+  <section class="section section-alt" id="gameplay">
+    <div class="container">
+      <h2 class="section-title">玩法介绍</h2>
+      <p class="section-subtitle">不止是原版生存，更多玩法等你体验</p>
+      <div class="grid grid-4">
+        <div class="card card-sm">
+          <div class="card-icon">🏠</div>
+          <h3>领地系统</h3>
+          <p>圈地保护你的家园，权限管理、传送回家一步到位。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">⚔️</div>
+          <h3>mcMMO 技能</h3>
+          <p>挖掘、战斗、农业、钓鱼……技能越练越强，解锁专属能力。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">🐾</div>
+          <h3>宠物系统</h3>
+          <p>捕捉并培养你的 MyPet 宠物，升级进化，还能骑乘。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">💰</div>
+          <h3>经济系统</h3>
+          <p>金币 + 点券双货币体系，赚钱途径丰富，市场自由交易。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">📅</div>
+          <h3>每日签到</h3>
+          <p>每天上线签到领奖，连续签到奖励更丰厚。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">🛒</div>
+          <h3>玩家市场</h3>
+          <p>闲置物品上架出售，NPC 商店收购，供需自由流通。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">🔐</div>
+          <h3>箱子锁</h3>
+          <p>LockettePro 保护箱子与门，私有财产神圣不可侵犯。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">🌌</div>
+          <h3>多世界探索</h3>
+          <p>主世界、下界、末地、资源世界等多个世界等你探索。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">🪑</div>
+          <h3>休闲互动</h3>
+          <p>GSit 随处坐、躺、趴，和朋友一起看日出日落。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">🌲</div>
+          <h3>快速砍树</h3>
+          <p>Timber 一键砍树，整棵树瞬间掉落，伐木效率拉满。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">🏆</div>
+          <h3>成就与排行</h3>
+          <p>成就系统记录你的每一步成长，排行榜见证大佬诞生。</p>
+        </div>
+        <div class="card card-sm">
+          <div class="card-icon">🎨</div>
+          <h3>个性装扮</h3>
+          <p>自定义皮肤、称号与名牌，打造独一无二的形象。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 加入指南 ============ -->
+  <section class="section" id="join">
+    <div class="container">
+      <h2 class="section-title">加入指南</h2>
+      <p class="section-subtitle">三步进入 STCraft，开始你的冒险</p>
+
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h3>启动游戏</h3>
+            <p>打开 Minecraft Java 版客户端（推荐使用与服务端一致的版本，其他版本也可尝试）。</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h3>添加服务器</h3>
+            <p>进入「多人游戏」→「添加服务器」，在地址栏粘贴下方服务器地址并保存。</p>
+            <div class="code-line">
+              <code id="serverAddressGuide">加载中…</code>
+              <button class="btn-copy" data-copy-target="serverAddressGuide" aria-label="复制地址">复制</button>
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h3>注册并登录</h3>
+            <p>首次进入服务器，请注册你的账号密码；之后每次进服登录即可。</p>
+            <div class="code-line">
+              <code>/register 密码 密码</code>
+              <button class="btn-copy" data-copy-text="/register 密码 密码" aria-label="复制注册命令">复制</button>
+            </div>
+            <div class="code-line">
+              <code>/login 密码</code>
+              <button class="btn-copy" data-copy-text="/login 密码" aria-label="复制登录命令">复制</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tips">
+        <h3>💡 小贴士</h3>
+        <ul>
+          <li>服务器为离线模式，正版与盗版玩家均可加入，注册密码保障账号安全。</li>
+          <li>请牢记你的密码，忘记密码请联系管理员协助找回。</li>
+          <li>进服后建议先输入 <code>/spawn</code> 回到出生点，熟悉环境后再出发冒险。</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 服务器规则 ============ -->
+  <section class="section section-alt" id="rules">
+    <div class="container">
+      <h2 class="section-title">服务器规则</h2>
+      <p class="section-subtitle">良好的游戏环境需要大家共同维护</p>
+      <div class="rules-list">
+        <div class="rule"><span class="rule-no">01</span><span>禁止使用外挂、作弊端、透视材质、连点器等一切破坏公平的辅助工具，违者封禁处理。</span></div>
+        <div class="rule"><span class="rule-no">02</span><span>禁止破坏、偷窃他人建筑与物品，禁止恶意圈地占地、设置陷阱害人。</span></div>
+        <div class="rule"><span class="rule-no">03</span><span>禁止欺诈交易，贵重物品交易请使用玩家市场，线下交易风险自负。</span></div>
+        <div class="rule"><span class="rule-no">04</span><span>聊天频道禁止刷屏、辱骂、引战、发布违规内容及任何形式的广告。</span></div>
+        <div class="rule"><span class="rule-no">05</span><span>禁止私自建造高频红石、刷物机等严重影响服务器性能的装置。</span></div>
+        <div class="rule"><span class="rule-no">06</span><span>尊重管理员的管理决定，如有异议请通过官方群或游戏内向管理员申诉。</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 常见问题 ============ -->
+  <section class="section" id="faq">
+    <div class="container container-narrow">
+      <h2 class="section-title">常见问题</h2>
+      <p class="section-subtitle">进服前你可能想知道的</p>
+
+      <details class="faq-item">
+        <summary>需要正版账号吗？</summary>
+        <p>不需要。服务器为离线模式，正版与非正版客户端均可加入。首次进服使用 <code>/register 密码 密码</code> 注册即可。</p>
+      </details>
+      <details class="faq-item">
+        <summary>支持哪些客户端版本？</summary>
+        <p>服务端基于 26.2，并通过 ViaVersion / ViaBackwards 兼容其他版本客户端。推荐使用与服务端一致的版本以获得最佳体验。</p>
+      </details>
+      <details class="faq-item">
+        <summary>如何保护我的家和箱子？</summary>
+        <p>使用领地系统圈地保护建筑范围；箱子、门等容器可以使用 LockettePro 上锁。两者配合即可高枕无忧。</p>
+      </details>
+      <details class="faq-item">
+        <summary>忘记登录密码怎么办？</summary>
+        <p>请联系管理员协助重置密码。建议平时牢记自己设置的密码。</p>
+      </details>
+      <details class="faq-item">
+        <summary>服务器可以传送吗？</summary>
+        <p>可以。服务器提供玩家互传、回家、回出生点等便捷传送功能，具体指令可在游戏内查看菜单或询问管理员。</p>
+      </details>
+      <details class="faq-item">
+        <summary>遇到作弊玩家怎么办？</summary>
+        <p>请在游戏内截图/录像保留证据，并在第一时间联系管理员举报。服务器已部署反作弊系统，核实后会严肃处理。</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ============ 页脚 ============ -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-team">
+        <span class="footer-team-label">管理团队</span>
+        <div class="team-avatars" id="teamAvatars"></div>
+      </div>
+      <div class="footer-meta">
+        <p>&copy; <span id="year">2026</span> STCraft &middot; Minecraft 生存服务器</p>
+        <p id="footerContact"></p>
+        <p class="footer-note">本站为玩家自建页面，与 Mojang Studios / Microsoft 无关。Minecraft 是 Mojang Studios 的商标。</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
