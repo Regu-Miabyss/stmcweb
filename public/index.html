@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>STCraft — Minecraft 生存服务器</title>
-  <meta name="description" content="STCraft 是一款 Minecraft Java 版生存服务器：领地保护、mcMMO 技能、宠物、玩家市场、每日签到，正版离线均可加入。">
+  <meta name="description" content="STCraft 是一款 Minecraft Java 版生存服务器：领地保护、mcMMO 技能、玩家市场、每日签到，正版离线均可加入。">
   <meta property="og:title" content="STCraft — Minecraft 生存服务器">
   <meta property="og:description" content="探索、建造、生存 —— 属于你的方块冒险。">
   <meta property="og:type" content="website">
@@ -37,6 +37,7 @@
         <span class="brand-text">STCraft</span>
       </a>
       <nav class="nav-links" id="navLinks">
+        <a href="#enchants">自定义附魔</a>
         <a href="#features">服务器特色</a>
         <a href="#gameplay">玩法介绍</a>
         <a href="#join">加入指南</a>
@@ -53,7 +54,7 @@
     <div class="container hero-inner">
       <div class="hero-badge">Java 版 &middot; 生存 &middot; 多版本兼容 &middot; 正版离线均可</div>
       <h1 class="hero-title">STCraft</h1>
-      <p class="hero-slogan">探索、建造、生存 —— 属于你的方块冒险。<br>领地、技能、宠物、市场，一次满足。</p>
+      <p class="hero-slogan">探索、建造、生存 —— 属于你的方块冒险。<br>领地、技能、市场，一次满足。</p>
       <div class="hero-actions">
         <button class="btn btn-primary" id="copyAddressBtn">复制服务器地址</button>
         <a class="btn btn-ghost" href="#join">如何加入？</a>
@@ -66,12 +67,7 @@
         <a class="contact-chip" id="qqGroupLink" href="#" target="_blank" rel="noopener">🐧 加入 QQ 群一起开黑</a>
         <span class="qq-number">群号：<code id="qqGroup"></code><button class="btn-copy" data-copy-target="qqGroup" aria-label="复制群号">复制</button></span>
       </div>
-    </div>
-  </section>
-
-  <!-- ============ 实时状态 ============ -->
-  <section class="status snap-section" id="status" data-section="bg-features">
-    <div class="container">
+    
       <div class="status-grid">
         <div class="status-card">
           <span class="status-label">服务器状态</span>
@@ -94,6 +90,21 @@
         </div>
       </div>
       <p class="status-note">状态数据由 mcsrvstat.us 实时查询，每 60 秒自动刷新。</p>
+    
+    </div>
+  </section>
+
+  <!-- ============ 实时状态 ============ -->
+  <section class="section section-alt snap-section" id="enchants" data-section="bg-features">
+    <div class="container">
+      <h2 class="section-title">自定义附魔</h2>
+      <p class="section-subtitle">打造专属于你的神兵利器</p>
+      <div class="enchant-container glass-panel">
+        <ul class="enchant-tabs" id="enchantTabs">
+        </ul>
+        <div class="enchant-content" id="enchantContent">
+        </div>
+      </div>
     </div>
   </section>
 

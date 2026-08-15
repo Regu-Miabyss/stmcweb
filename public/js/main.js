@@ -246,3 +246,59 @@
     });
   }
 })();
+
+
+// ============ 自定义附魔数据加载与渲染 ============
+document.addEventListener('DOMContentLoaded', () => {
+  const enchantTabs = document.getElementById('enchantTabs');
+  const enchantContent = document.getElementById('enchantContent');
+  
+  if (!enchantTabs || !enchantContent) return;
+
+  fetch('data_enchants.json')
+    .then(res => res.json())
+    .then(data => {
+      let activeIndex = 0;
+      
+      const renderContent = (index) => {
+        const categoryData = data[index];
+        let html = '<table class="enchant-table"><thead><tr>';
+        
+        categoryData.headers.forEach(h => {
+          html += `<th>${h}</th>`;
+        });
+        html += '</tr></thead><tbody>';
+        
+        categoryData.rows.forEach(row => {
+          html += '<tr>';
+          row.forEach(col => {
+            html += `<td>${col}</td>`;
+          });
+          html += '</tr>';
+        });
+        
+        html += '</tbody></table>';
+        enchantContent.innerHTML = html;
+        enchantContent.scrollTop = 0;
+      };
+
+      data.forEach((cat, idx) => {
+        const li = document.createElement('li');
+        li.textContent = cat.category;
+        if (idx === 0) li.classList.add('active');
+        
+        li.addEventListener('click', () => {
+          document.querySelectorAll('.enchant-tabs li').forEach(el => el.classList.remove('active'));
+          li.classList.add('active');
+          renderContent(idx);
+        });
+        
+        enchantTabs.appendChild(li);
+      });
+
+      if (data.length > 0) {
+        renderContent(0);
+      }
+    })
+    .catch(err => console.error("Error loading enchants data:", err));
+});
