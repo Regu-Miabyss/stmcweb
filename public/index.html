@@ -37,7 +37,7 @@
         <span class="brand-text">STCraft</span>
       </a>
       <nav class="nav-links" id="navLinks">
-        <a href="#enchants">自定义附魔</a>
+        <a href="#advanced">进阶玩法</a>
         <a href="#features">服务器特色</a>
         <a href="#gameplay">玩法介绍</a>
         <a href="#join">加入指南</a>
@@ -95,15 +95,30 @@
   </section>
 
   <!-- ============ 实时状态 ============ -->
-  <section class="section section-alt snap-section" id="enchants" data-section="bg-features">
+  <section class="section section-alt snap-section" id="advanced" data-section="bg-features">
     <div class="container">
-      <h2 class="section-title">自定义附魔</h2>
-      <p class="section-subtitle">打造专属于你的神兵利器</p>
-      <div class="enchant-container glass-panel">
-        <ul class="enchant-tabs" id="enchantTabs">
-        </ul>
-        <div class="enchant-content" id="enchantContent">
+      <h2 class="section-title">进阶玩法</h2>
+      <p class="section-subtitle">探索更多深度游戏系统</p>
+      <div class="grid grid-3">
+        
+        <div class="card card-sm clickable-card" data-modal="modal-enchants">
+          <div class="card-icon" style="font-size:40px; margin-bottom:10px;">🔮</div>
+          <h3>自定义附魔</h3>
+          <p>点击查看服务器专属自定义附魔列表及效果。</p>
         </div>
+        
+        <div class="card card-sm clickable-card" data-modal="modal-soulring">
+          <div class="card-icon" style="font-size:40px; margin-bottom:10px;">💍</div>
+          <h3>灵魂空间戒指</h3>
+          <p>无限堆叠、自动拾取，随用随取的私人储物空间。</p>
+        </div>
+        
+        <div class="card card-sm clickable-card" data-modal="modal-battlepass">
+          <div class="card-icon" style="font-size:40px; margin-bottom:10px;">📜</div>
+          <h3>战令通行证</h3>
+          <p>完成每日任务，获取海量稀有奖励。</p>
+        </div>
+
       </div>
     </div>
   </section>
@@ -422,5 +437,205 @@
     });
   </script>
 
-</body>
+
+  <!-- ============ 模态框 ============ -->
+  <div class="modal-overlay" id="modalOverlay">
+    
+    <!-- Modal: Enchants -->
+    <div class="modal-box glass-panel" id="modal-enchants">
+      <button class="modal-close" aria-label="关闭">&times;</button>
+      <h2 class="modal-title">自定义附魔</h2>
+      <div class="enchant-container">
+        <ul class="enchant-tabs" id="enchantTabs"></ul>
+        <div class="enchant-content" id="enchantContent"></div>
+      </div>
+    </div>
+    
+    <!-- Modal: Soul Ring -->
+    <div class="modal-box glass-panel" id="modal-soulring">
+      <button class="modal-close" aria-label="关闭">&times;</button>
+      <div class="modal-body markdown-body">
+        <blockquote>
+          <p><strong>附加说明：</strong>灵魂戒指免费赠送 9 格子，可以无限堆叠，随用随取。共 6 页每页 45 格子，500星辰币可以解锁一页，可自动吸附物品。<br>菜单新增赛季战令 9/30 月底结束。</p>
+        </blockquote>
+        <hr>
+        <h1>玩家使用</h1>
+<h2>打开空间</h2>
+<p>手持「灵魂空间戒指」<strong>右键</strong>（空气或方块均可）打开个人空间，主手副手都支持。左键不会触发。</p>
+<p>空间固定为多页 6 行 9 列布局，最下面一行是功能栏；每页可放 45 种物品。</p>
+<h2>空间内操作（点击空间物品）</h2>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左键</td>
+<td>取 1 个进背包</td>
+</tr>
+<tr>
+<td>右键</td>
+<td>取 64 个进背包</td>
+</tr>
+<tr>
+<td>shift + 左键</td>
+<td>背包全部物品放入空间</td>
+</tr>
+<tr>
+<td>shift + 右键</td>
+<td>取最多 1728 个进背包（自动分组成原版上限）</td>
+</tr>
+</tbody>
+</table>
+<p>取走物品后，后续物品自动前移补位，空间始终紧凑、没有空洞。</p>
+<h2>放入物品（点击背包物品）</h2>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左键</td>
+<td>放 1 个</td>
+</tr>
+<tr>
+<td>右键</td>
+<td>放 64 个</td>
+</tr>
+<tr>
+<td>shift + 左键</td>
+<td>放一组（按物品原版上限）</td>
+</tr>
+<tr>
+<td>shift + 右键</td>
+<td>背包中同类物品全部放入</td>
+</tr>
+</tbody>
+</table>
+<p>戒指不能被放入空间。</p>
+<h2>无限堆叠</h2>
+<p>同类物品在空间内自动合并，真实数量可超过原版上限（如 256、1024）。GUI 中每个物品显示数量恒为 1（无角标），<strong>鼠标悬停</strong>时 Lore 显示真实数量。</p>
+<h2>功能栏按钮</h2>
+<table>
+<thead>
+<tr>
+<th>槽位</th>
+<th>按钮</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>45</td>
+<td>上一页</td>
+<td>第一页时隐藏</td>
+</tr>
+<tr>
+<td>46</td>
+<td>排序</td>
+<td>左键切换按名称/数量，右键切换升序/降序；排序整个空间</td>
+</tr>
+<tr>
+<td>47</td>
+<td>自动拾取</td>
+<td>点击切换开/关，图标与文字显示当前状态</td>
+</tr>
+<tr>
+<td>48</td>
+<td>关闭</td>
+<td>关闭界面</td>
+</tr>
+<tr>
+<td>49</td>
+<td>存放 / 垃圾桶</td>
+<td>左键：背包全部物品存入空间；右键：打开垃圾桶</td>
+</tr>
+<tr>
+<td>50</td>
+<td>页码</td>
+<td>显示当前页/总页数与开放格子数</td>
+</tr>
+<tr>
+<td>51</td>
+<td>分类</td>
+<td>点击循环切换分类（全部 → 分类1 → 分类2 → …）</td>
+</tr>
+<tr>
+<td>52</td>
+<td>自定义按钮</td>
+<td>可配置的指令按钮（默认黑玻璃）</td>
+</tr>
+<tr>
+<td>53</td>
+<td>下一页</td>
+<td>最后一页时隐藏</td>
+</tr>
+</tbody>
+</table>
+<h2>自动拾取</h2>
+<ul>
+<li><strong>shift + 右键戒指</strong>：切换自动拾取开关，戒指 Lore 实时显示「自动拾取：开启/关闭」。</li>
+<li>开启后：挖掘方块掉落、击杀实体掉落会<strong>瞬间</strong>进入空间；走到掉落物旁边也会自动收取（兜底）。</li>
+<li>空间放不下时，按配置回退到普通背包；仍放不下则留在地面，不会丢失物品。</li>
+<li>需要 <code>soulspace.autopickup</code> 权限才能使用，<code>soulspace.autopickup.toggle</code> 权限才能开关。</li>
+</ul>
+<h2>解锁格子</h2>
+<p>空间未解锁的格子显示为黑色玻璃板，悬停可见解锁花费与说明。<strong>点击</strong>未解锁格子：</p>
+<ol>
+<li>按配置扣取点券 / 金币；</li>
+<li>解锁一批格子（<code>slots-per-click</code>，如 225 格）；</li>
+<li>执行配置的奖励指令（如授予自动拾取权限）；</li>
+<li>执行自定义操作（如自动开启自动拾取）。</li>
+</ol>
+<h2>垃圾桶</h2>
+<p>右键 49 号按钮打开垃圾桶，垃圾桶显示空间内全部物品，删除的是<strong>空间</strong>里的物品：</p>
+<table>
+<thead>
+<tr>
+<th>操作</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>左键</td>
+<td>删除 1 个</td>
+</tr>
+<tr>
+<td>右键</td>
+<td>删除 64 个</td>
+</tr>
+<tr>
+<td>shift + 左键</td>
+<td>删除 640 个</td>
+</tr>
+<tr>
+<td>shift + 右键</td>
+<td>全部删除</td>
+</tr>
+</tbody>
+</table>
+<p>垃圾桶支持翻页：每页显示 45 种物品，功能行 45 上一页、46 页码、52 下一页、53 返回空间界面（不是关闭）。</p>
+      </div>
+    </div>
+
+    <!-- Modal: Battle Pass -->
+    <div class="modal-box glass-panel" id="modal-battlepass">
+      <button class="modal-close" aria-label="关闭">&times;</button>
+      <h2 class="modal-title">战令通行证</h2>
+      <div class="modal-body markdown-body">
+        <p>划分普通、高级、豪华三档战令。可使用服务器金币、点券购买进阶通行证。</p>
+        <p>玩家通过完成击杀、挖掘、钓鱼、在线挂机、登录等每日、每周、赛季任务获取战令积分，提升战令等级。获取更多奖励。</p>
+      </div>
+    </div>
+    
+  </div>
+
+  </body>
 </html>

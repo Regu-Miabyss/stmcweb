@@ -1049,3 +1049,147 @@ details.glass-panel p {
     border-right: 1px solid rgba(255,255,255,0.05);
   }
 }
+
+
+/* ============ 模态框与点击卡片 ============ */
+
+.clickable-card {
+  cursor: pointer;
+  position: relative;
+}
+.clickable-card::after {
+  content: "点击查看";
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-size: 12px;
+  color: var(--green);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.clickable-card:hover::after {
+  opacity: 1;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0; left: 0; width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-box {
+  width: 90%;
+  max-width: 900px;
+  max-height: 85vh;
+  background: rgba(20, 20, 20, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0;
+  position: relative;
+  display: none;
+  flex-direction: column;
+}
+.modal-box.active {
+  display: flex;
+}
+
+.modal-close {
+  position: absolute;
+  top: 12px; right: 16px;
+  background: none; border: none;
+  color: #aaa;
+  font-size: 28px;
+  cursor: pointer;
+  z-index: 10;
+  transition: color 0.2s;
+}
+.modal-close:hover {
+  color: #fff;
+}
+
+.modal-title {
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  margin: 0;
+  font-size: 20px;
+  color: var(--green);
+}
+
+.modal-body {
+  padding: 24px;
+  overflow-y: auto;
+  color: #e0e0e0;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.markdown-body h1, .markdown-body h2, .markdown-body h3 {
+  color: #fff;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+.markdown-body h1:first-child, .markdown-body h2:first-child {
+  margin-top: 0;
+}
+.markdown-body p {
+  margin-bottom: 1em;
+}
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5em;
+}
+.markdown-body th, .markdown-body td {
+  border: 1px solid var(--border);
+  padding: 8px 12px;
+  text-align: left;
+}
+.markdown-body th {
+  background: rgba(0,0,0,0.5);
+  color: var(--green);
+}
+.markdown-body blockquote {
+  border-left: 4px solid var(--green);
+  padding-left: 16px;
+  margin: 0 0 16px 0;
+  color: #ccc;
+  background: rgba(255,255,255,0.05);
+  padding: 12px 16px;
+  border-radius: 4px;
+}
+.markdown-body hr {
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 20px 0;
+}
+.markdown-body ul {
+  padding-left: 20px;
+  margin-bottom: 1em;
+}
+
+/* Adjust enchants container for modal */
+#modal-enchants .enchant-container {
+  height: 60vh;
+  margin-top: 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.markdown-body code {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-family: monospace;
+}
